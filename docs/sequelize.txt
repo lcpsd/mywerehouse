@@ -1,0 +1,17 @@
+.sequelizerc // arquivo de configuração para indicar onde os arquivos serão criados e quais pastas serão usadas
+
+    const {resolve} = require('path')
+
+    module.exports = {
+        config: resolve(__dirname,'src','config','database.js'),
+        "models-path": resolve(__dirname,'src','models'),
+        "migrations-path": resolve(__dirname,'src','database','migrations'),
+        "seeds-path": resolve(__dirname,'src','database','seeders')
+    }
+______________________________________________________________________________________________________________________
+
+npx sequelize-cli init // cria as pastas e arquivos base da aplicação
+npx sequelize model:generate --name nomeTabela --atributes campo:tipo, campo:tipo // gera o model e a migration daquele model
+npx sequelize migration:create --name nomeDaMigration
+npx sequelize db:migrate // aplica as mudanças no banco de dados
+npx sequelize db:migrate:undo e :undo:all // desfaz a ultima migration ou todas respectivamente
